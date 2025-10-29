@@ -1,0 +1,166 @@
+# ==========================================
+# OS GENERATED FILES
+# ==========================================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+.AppleDouble
+.LSOverride
+Desktop.ini
+*~
+
+# ==========================================
+# IDE & EDITORS
+# ==========================================
+.vscode/
+.idea/
+*.swp
+*.swo
+*.sublime-project
+*.sublime-workspace
+*.code-workspace
+*.iml
+
+# ==========================================
+# ENVIRONMENT & SECRETS
+# ==========================================
+.env
+.env.*
+!.env.example
+*.tfvars
+*.tfvars.json
+!*.tfvars.example
+secrets.json
+config.json
+credentials.json
+hedera_credentials.json
+*.secret
+*.secrets
+*.pem
+*.key
+id_rsa*
+id_ed25519*
+
+# ==========================================
+# TERRAFORM (CRITICAL!)
+# ==========================================
+**/.terraform/*
+**/.terraform/
+.terraform.lock.hcl
+*.tfstate
+*.tfstate.*
+*.tfstate.backup
+crash.log
+crash.*.log
+*.tfplan
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+.terraformrc
+terraform.rc
+
+# ==========================================
+# NODE.JS / NPM
+# ==========================================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+.npm
+.yarn/
+.pnp.*
+*.tsbuildinfo
+
+# ==========================================
+# PYTHON
+# ==========================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+venv/
+env/
+ENV/
+.venv/
+*.pyc
+
+# ==========================================
+# BUILD OUTPUTS & ARTIFACTS
+# ==========================================
+.next/
+out/
+dist/
+build/
+coverage/
+*.log
+logs/
+
+# ==========================================
+# TEMPORARY & CACHE FILES
+# ==========================================
+*.tmp
+*.temp
+*.bak
+*.backup
+.cache/
+tree
+*.db
+*.sqlite
+*.sqlite3
+
+# ==========================================
+# DOCKER
+# ==========================================
+docker-compose.override.yml
+Dockerfile.local
+
+# ==========================================
+# ARCHIVES
+# ==========================================
+*.zip
+*.tar.gz
+*.rar
+
+# ==========================================
+# PROJECT SPECIFIC
+# ==========================================
+# OCR temp files
+tesseract_temp/
+ocr_cache/
+pdf_temp/
+*.pdf.tmp
+
+# Testing
+test_results/
+test_uploads/
+htmlcov/
+.coverage
+.pytest_cache/
+
+# Models
+models/
+*.pkl
+*.joblib
+*.model

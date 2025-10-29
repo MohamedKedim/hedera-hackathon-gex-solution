@@ -1,0 +1,19 @@
+# Plausibility Check API Requirements
+
+# Web Framework
+fastapi==0.115.4
+uvicorn[standard]==0.32.0
+
+# Data Validation
+pydantic==2.9.2
+
+# Environment Variables
+python-dotenv==1.0.1
+
+# Testing
+requests==2.31.0
+
+# Standard library (already included in Python)
+# - hashlib
+# - json
+# - datetime

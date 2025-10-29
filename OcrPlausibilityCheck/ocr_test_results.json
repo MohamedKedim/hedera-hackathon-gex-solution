@@ -1,0 +1,92 @@
+{
+  "pos": {
+    "status": "success",
+    "filename": "PoS_A.pdf",
+    "data": {
+      "document_info": {
+        "document_type": "Proof of Sustainability (PoS)",
+        "unique_number": "A",
+        "issuance_date": "2025-06-20",
+        "directive": "EU"
+      },
+      "supplier_recipient": {
+        "supplier": {
+          "name": "GreenHydro Methanol GmbH",
+          "address": null,
+          "country": null,
+          "certification_system": null,
+          "certificate_number": null
+        },
+        "recipient": {
+          "name": "Valenz Chemicals GmbH",
+          "address": null,
+          "country": null,
+          "contract_number": null
+        },
+        "shipping_point": null,
+        "receiving_point": null
+      },
+      "feedstock": {
+        "type": null,
+        "country_of_origin": null,
+        "is_waste_residue": false,
+        "is_low_iluc_risk": false,
+        "is_intermediate_crop": false,
+        "classification": null,
+        "waste_permit_number": null
+      },
+      "fuel_product": {
+        "type": null,
+        "quantity": "59.7",
+        "unit": "t",
+        "energy_content_mj": "328.35",
+        "country_of_production": null,
+        "production_start_date": null,
+        "dispatch_date": null,
+        "eu_red_compliant": false,
+        "iscc_compliant": false
+      },
+      "ghg_emissions": {
+        "total_emissions_gco2eq_mj": "-51.2",
+        "emission_saving_percentage": null,
+        "default_value_applied": false,
+        "breakdown": {
+          "eec": null,
+          "el": null,
+          "ep": null,
+          "etd": null,
+          "eu": null,
+          "esca": null,
+          "eccs": null,
+          "eccr": null
+        },
+        "fossil_fuel_comparator": null
+      },
+      "compliance": {
+        "red_ii_article_29_compliant": false,
+        "sustainability_criteria_met": false,
+        "chain_of_custody": "Mass Balance",
+        "no_double_counting": true,
+        "additional_certifications": []
+      },
+      "dates": {
+        "issuance_date": "2025-06-20",
+        "dispatch_date": null,
+        "production_start_date": null,
+        "bioliquid_use_date": null
+      },
+      "certification": {
+        "certification_scheme": "ISCC EU (RFNBO)",
+        "certificate_number": "EU\u25a0ISCC\u25a0Cert\u25a0DE123\u25a02025\u25a00001",
+        "issuing_body": "Control Union Certifications",
+        "auditor": null
+      },
+      "raw_text": "Proof of Sustainability (PoS) \u2014 Batch A\nCertificate\nPoS ID: EU\u25a0ISCC\u25a0Cert\u25a0DE123\u25a02025\u25a00001\u25a0A\nScheme: ISCC EU (RFNBO)\nIssuer: Control Union Certifications\nIssue Date: 2025\u25a006\u25a020\nParties\nSupplier: GreenHydro Methanol GmbH\nRecipient: Valenz Chemicals GmbH\nBatch\nBatch ID: BATCH\u25a02025\u25a006\u25a0A\nBatch Volume: 59.7 t\nEnergy Content: 328.35 MWh\nGHG\nCI (LCA): -51.2 gCO\u25a0e/MJ (limit \u2264 \u221249.5)\nChain of Custody\nMass Balance ; No Double Counting: TRUE\n\n",
+      "structured_text": null,
+      "llm_refined": true
+    }
+  },
+  "termsheet": "TermSheet_Valenz_eMeOH.pdf",
+  "ppa": "PPA_Valenz_eMeOH.pdf",
+  "invoice": "Invoice_test.pdf"
+}

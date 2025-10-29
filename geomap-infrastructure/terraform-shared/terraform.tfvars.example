@@ -1,0 +1,11 @@
+# terraform-shared/terraform.tfvars.example
+# Copy this file to terraform.tfvars and fill in your values
+
+# Domain name commented out for testing - using ALB DNS instead
+# domain_name = "yourdomain.com"
+
+# Optional variables (uncomment and modify if needed)
+# aws_region = "us-west-1"
+# environment = "prod"
+# vpc_cidr = "10.0.0.0/16"
+# availability_zones_count = 2

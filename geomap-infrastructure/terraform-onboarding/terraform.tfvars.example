@@ -1,0 +1,30 @@
+# terraform-onboarding/terraform.tfvars.example
+# Copy this file to terraform.tfvars and fill in your values
+
+# Database password (required) - PostgreSQL
+db_password = "your-secure-database-password"
+
+# OAuth credentials (required)
+google_client_id = "your-google-client-id"
+google_client_secret = "your-google-client-secret"
+
+# Email configuration (required)
+email_user = "your-email@gmail.com"
+email_pass = "your-app-password"
+
+# reCAPTCHA keys (required)
+recaptcha_site_key = "your-recaptcha-site-key"
+recaptcha_secret_key = "your-recaptcha-secret-key"
+
+# Application secrets (required)
+jwt_secret = "your-jwt-secret-key"
+nextauth_secret = "your-nextauth-secret-key"
+
+# Optional variables (uncomment and modify if needed)
+# aws_region = "us-west-1"
+# environment = "prod"
+# subdomain = "auth"  # Not used in testing mode
+# db_instance_class = "db.t3.micro"
+# ecs_task_cpu = 256
+# ecs_task_memory = 512
+# app_count = 2
