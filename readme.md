@@ -40,17 +40,16 @@ Since 10 minutes is not sufficient for full credentials configuration, we are pr
 > This is a monorepo grouping all hackathon components into a single GitHub project.
 > Each folder is a self-contained module with its own README.md, scripts, and deployment instructions.
 
-| Folder                      | Purpose                                                   | Local URL                | Key README                                  |
-|-----------------------------|-----------------------------------------------------------|--------------------------|---------------------------------------------|
-| certification.webapp        | Next.js dApp for document upload, OCR trigger, NFT minting | http://localhost:3002    | [certification.webapp/README.md](certification.webapp/README.md) |
-| Geomap.webapp               | Interactive global plant map + live Mirror Node history   | http://localhost:3001    | [Geomap.webapp/README.md](geomap.webapp/README.md) |
-| Onboarding.app              | User onboarding                                                             | http://localhost:3000    | [Onboarding.app/README.md](Onboarding.app/README.md) |
-| OcrPlausibilityCheck        | Python FastAPI OCR service (Docker)                       | http://localhost:8000    | [OcrPlausibilityCheck/README.md](OcrPlausibilityCheck/README.md) |
-| PlausibilityCheck           | Plausibility algorithm micro-service (Docker)             | http://localhost:8001    | [PlausibilityCheck/README.md](PlausibilityCheck/README.md) |
-| Hedera-collection-and-topics| Scripts to create NFT collections & HCS topic             | —                        | [Hedera-collection-and-topics/README.md](Hedera-collection-and-topics/README.md) |
-| certification_terraform     | Terraform IaC for backend infra (optional)                | —                        | -|
-| geomap-infrastructure       | Cloud infra for Geomap (optional)                         | —                        | - |
-
+| Folder                      | Purpose                                                   | Official Repository URL                                    | Key README                                  |
+|-----------------------------|-----------------------------------------------------------|------------------------------------------------------------|---------------------------------------------|
+| certification.webapp        | Next.js dApp for document upload, OCR trigger, NFT minting | [https://github.com/GreenEarthX/certification.webapp](https://github.com/GreenEarthX/certification.webapp) | [certification.webapp/README.md](certification.webapp/README.md) |
+| Geomap.webapp               | Interactive global plant map + live Mirror Node history   | [https://github.com/GreenEarthX/geomap.webapp](https://github.com/GreenEarthX/geomap.webapp) | [Geomap.webapp/README.md](Geomap.webapp/README.md) |
+| Onboarding.app              | User onboarding                                           | [https://github.com/GreenEarthX/onboarding](https://github.com/GreenEarthX/onboarding) | [Onboarding.app/README.md](Onboarding.app/README.md) |
+| OcrPlausibilityCheck        | Python FastAPI OCR service (Docker)                       | [https://github.com/GreenEarthX/plausibility_check_ocrs](https://github.com/GreenEarthX/plausibility_check_ocrs) | [OcrPlausibilityCheck/README.md](OcrPlausibilityCheck/README.md) |
+| PlausibilityCheck           | Plausibility algorithm micro-service (Docker)             | [https://github.com/GreenEarthX/plausibilitycheck](https://github.com/GreenEarthX/plausibilitycheck) | [PlausibilityCheck/README.md](PlausibilityCheck/README.md) |
+| Hedera-collection-and-topics| Scripts to create NFT collections & HCS topic             | —                                                          | [Hedera-collection-and-topics/README.md](Hedera-collection-and-topics/README.md) |
+| certification_terraform     | Terraform IaC for backend infra (optional)                | [https://github.com/GreenEarthX/certification_terraform](https://github.com/GreenEarthX/certification_terraform) | - |
+| geomap-infrastructure       | Cloud infra for Geomap (optional)                         | [https://github.com/GreenEarthX/geomap.terraform](https://github.com/GreenEarthX/geomap.terraform) | - |
 ## Hedera Integration Summary
 
 ### Services Used
