@@ -26,6 +26,15 @@ All verification is **on-chain, cost-effective, and instantly shareable**.
 ## Architecture Diagram
 <img width="1994" height="1194" alt="image" src="https://github.com/user-attachments/assets/fa4b5210-9be0-4491-bcd3-b449d299edc8" />
 
+## ⚠️ **Important Tip for Judges:**
+We have deployed both applications on the cloud for you to test. The codebase used is exactly the same as the one presented in this repository.
+Since 10 minutes is not sufficient for full credentials configuration, we are providing you with the following resources:
+- Certification URL: [http://gexcertification.ddnsking.com:3000/](Certification WebApp)
+- Test Account: **Email:** `hedera@test.gmail`, **Password:** `Hedera2025*`
+- Geomap URL:  [https://geomap.greenearthx.io/](GeoMap) (you can create your own account)
+  
+> A Setup and Testing Guide is Provided for Each component in the repository in each Folder !
+
 ## Project Structure – Multi-Repo Layout
 
 > This is a monorepo grouping all hackathon components into a single GitHub project.
@@ -34,22 +43,13 @@ All verification is **on-chain, cost-effective, and instantly shareable**.
 | Folder                      | Purpose                                                   | Local URL                | Key README                                  |
 |-----------------------------|-----------------------------------------------------------|--------------------------|---------------------------------------------|
 | certification.webapp        | Next.js dApp for document upload, OCR trigger, NFT minting | http://localhost:3002    | [certification.webapp/README.md](certification.webapp/README.md) |
-| Geomap.webapp               | Interactive global plant map + live Mirror Node history   | http://localhost:3001    | [Geomap.webapp/README.md](Geomap.webapp/README.md) |
+| Geomap.webapp               | Interactive global plant map + live Mirror Node history   | http://localhost:3001    | [Geomap.webapp/README.md](geomap.webapp/README.md) |
 | Onboarding.app              | User onboarding                                                             | http://localhost:3000    | [Onboarding.app/README.md](Onboarding.app/README.md) |
 | OcrPlausibilityCheck        | Python FastAPI OCR service (Docker)                       | http://localhost:8000    | [OcrPlausibilityCheck/README.md](OcrPlausibilityCheck/README.md) |
 | PlausibilityCheck           | Plausibility algorithm micro-service (Docker)             | http://localhost:8001    | [PlausibilityCheck/README.md](PlausibilityCheck/README.md) |
 | Hedera-collection-and-topics| Scripts to create NFT collections & HCS topic             | —                        | [Hedera-collection-and-topics/README.md](Hedera-collection-and-topics/README.md) |
-| certification_terraform     | Terraform IaC for backend infra (optional)                | —                        | [certification_terraform/README.md](certification_terraform/README.md) |
-| geomap-infrastructure       | Cloud infra for Geomap (optional)                         | —                        | [geomap-infrastructure/README.md](geomap-infrastructure/README.md) |
-
-## ⚠️ **Important Tip for Judges:**
-We have deployed both applications on the cloud for you to test. The codebase used is exactly the same as the one presented in this repository.
-Since 10 minutes is not sufficient for full credentials configuration, we are providing you with the following resources:
-- Certification URL: [http://gexcertification.ddnsking.com:3000/](Certification WebApp)
-- Test Account: **Email:** `hedera@test.gmail`, **Password:** `Hedera2025*`
-- Geomap URL:  [https://geomap.greenearthx.io/](GeoMap) (you can create your own account)
-  
-> A Testing Guide is Provided for Each Folder in the repository.
+| certification_terraform     | Terraform IaC for backend infra (optional)                | —                        | -|
+| geomap-infrastructure       | Cloud infra for Geomap (optional)                         | —                        | - |
 
 ## Hedera Integration Summary
 
@@ -253,8 +253,7 @@ sudo docker run -d -p 8001:8001 --platform=linux/arm64 medbnk/plausibilityalgori
 
 ## Support & Contact
 
-**Team Contact:** [marwen123.c@gmail.com ]  
-**GitHub Issues:** [Link to your GitHub repo issues]  
+**Team Contact:** [mohamedbenkedim@gmail.com ]  
 
 ---
 
