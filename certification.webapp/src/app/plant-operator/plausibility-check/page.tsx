@@ -41,9 +41,10 @@ type PlausibilityResult = {
 };
 
 const mockUserPlants = [
-  { id: "PLANT-001", name: "Berlin Hydrogen Plant" },
-  { id: "PLANT-002", name: "Munich Solar Facility" },
-  { id: "PLANT-003", name: "Hamburg Wind Park" },
+  { id: "PLANT-001", name: "JetNova Fuels" },
+  { id: "PLANT-002", name: "MethoClear Energy" },
+  { id: "PLANT-003", name: "EcoHydro One " },
+  
 ];
 
 const useToast = () => {
@@ -235,6 +236,12 @@ export default function PlausibilityCheckPage() {
   const router = useRouter();
   const { toast, showToast } = useToast();
 
+  // Client should call our local server APIs — these proxies will use
+  // non-public env vars (OCR_SERVICE_URL, PLAUSIBILITY_SERVICE_URL) so the
+  // external service addresses remain server-side and work in cloud builds.
+  const OCR_BASE = '/api/ocr';
+  const PLAUSIBILITY_BASE = '/api/plausibility';
+
   const initPlant = (id: string) => {
     if (!uploads[id]) {
       setUploads((prev) => ({
@@ -281,23 +288,39 @@ export default function PlausibilityCheckPage() {
     const results: any = {};
     const current = uploads[selectedPlantId];
 
-    const process = async (file: File, type: "pos" | "invoice" | "ppa" | "termsheet") => {
+      const processFile = async (file: File, type: "pos" | "invoice" | "ppa" | "termsheet") => {
       const form = new FormData();
       form.append("file", file);
       const endpoint = type;
-      const res = await fetch(`http://localhost:8000/api/v1/ocr/${endpoint}`, {
+      // Call the local OCR proxy at /api/ocr/{endpoint}
+      const res = await fetch(`${OCR_BASE}/${endpoint}`, {
         method: "POST",
         body: form,
       });
-      const data = await res.json();
-      if (data.status === "success") results[type] = data.data;
+
+      if (!res.ok) {
+        const text = await res.text().catch(() => '');
+        console.error('OCR proxy error', res.status, text);
+        return;
+      }
+
+      // Only try to parse JSON if content-type is JSON
+      const ct = res.headers.get('content-type') || '';
+      if (ct.includes('application/json')) {
+        const data = await res.json();
+        if (data.status === "success") results[type] = data.data;
+      } else {
+        // Unexpected content-type: log and skip
+        const text = await res.text().catch(() => '');
+        console.warn('OCR response not JSON', ct, text);
+      }
     };
 
     const tasks = [];
-    if (current.proof.length) tasks.push(process(current.proof[0], "pos"));
-    if (current.invoice.length) tasks.push(process(current.invoice[0], "invoice"));
-    if (current.ppa.length) tasks.push(process(current.ppa[0], "ppa"));
-    if (current.termsheet.length) tasks.push(process(current.termsheet[0], "termsheet"));
+    if (current.proof.length) tasks.push(processFile(current.proof[0], "pos"));
+    if (current.invoice.length) tasks.push(processFile(current.invoice[0], "invoice"));
+    if (current.ppa.length) tasks.push(processFile(current.ppa[0], "ppa"));
+    if (current.termsheet.length) tasks.push(processFile(current.termsheet[0], "termsheet"));
 
     await Promise.all(tasks);
     setOcrResults(results);
@@ -372,13 +395,26 @@ export default function PlausibilityCheckPage() {
     const input = buildPlausibilityInput();
 
     try {
-      const res = await fetch("http://localhost:8001/api/v1/plausibility/check", {
+      // Call the local plausibility proxy at /api/plausibility/check
+      const res = await fetch(`${PLAUSIBILITY_BASE}/check`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(input),
       });
 
-      const result: PlausibilityResult = await res.json();
+      if (!res.ok) {
+        const text = await res.text().catch(() => '');
+        throw new Error(`Plausibility proxy returned ${res.status}: ${text}`);
+      }
+
+      const ct = res.headers.get('content-type') || '';
+      let result: PlausibilityResult;
+      if (ct.includes('application/json')) {
+        result = await res.json();
+      } else {
+        const text = await res.text().catch(() => '');
+        throw new Error(`Unexpected response from plausibility service: ${text}`);
+      }
       console.log("PLAUSIBILITY RESULT →", result);
 
       setPlausibilityResult(result);
@@ -688,12 +724,6 @@ export default function PlausibilityCheckPage() {
                   <div className="bg-gray-50 p-6 rounded-xl">
                     <h3 className="font-bold text-lg mb-3">Proof Summary</h3>
                     <p className="text-sm text-gray-700 whitespace-pre-line">{plausibilityResult.proof}</p>
-                  </div>
-
-                  <div className="flex justify-center pt-6">
-                    <button onClick={() => router.push(`/plant/${selectedPlantId}/history`)} className="px-10 py-4 bg-gradient-to-r from-green-600 to-emerald-600 text-white rounded-lg font-bold text-lg hover:from-green-700 hover:to-emerald-700 shadow-lg transition transform hover:scale-105">
-                      View Full History
-                    </button>
                   </div>
                 </div>
               )}
