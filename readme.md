@@ -26,22 +26,6 @@ All verification is **on-chain, cost-effective, and instantly shareable**.
 ## Architecture Diagram
 <img width="1994" height="1194" alt="image" src="https://github.com/user-attachments/assets/fa4b5210-9be0-4491-bcd3-b449d299edc8" />
 
-## Project Structure – Multi-Repo Layout
-
-> This is a monorepo grouping all hackathon components into a single GitHub project.
-> Each folder is a self-contained module with its own README.md, scripts, and deployment instructions.
-
-| Folder                      | Purpose                                                   | Local URL                | Key README                                  |
-|-----------------------------|-----------------------------------------------------------|--------------------------|---------------------------------------------|
-| certification.webapp        | Next.js dApp for document upload, OCR trigger, NFT minting | http://localhost:3002    | [certification.webapp/README.md](certification.webapp/README.md) |
-| Geomap.webapp               | Interactive global plant map + live Mirror Node history   | http://localhost:3001    | [Geomap.webapp/README.md](Geomap.webapp/README.md) |
-| Onboarding.app              | User onboarding                                                             | http://localhost:3000    | [Onboarding.app/README.md](Onboarding.app/README.md) |
-| OcrPlausibilityCheck        | Python FastAPI OCR service (Docker)                       | http://localhost:8000    | [OcrPlausibilityCheck/README.md](OcrPlausibilityCheck/README.md) |
-| PlausibilityCheck           | Plausibility algorithm micro-service (Docker)             | http://localhost:8001    | [PlausibilityCheck/README.md](PlausibilityCheck/README.md) |
-| Hedera-collection-and-topics| Scripts to create NFT collections & HCS topic             | —                        | [Hedera-collection-and-topics/README.md](Hedera-collection-and-topics/README.md) |
-| certification_terraform     | Terraform IaC for backend infra (optional)                | —                        | [certification_terraform/README.md](certification_terraform/README.md) |
-| geomap-infrastructure       | Cloud infra for Geomap (optional)                         | —                        | [geomap-infrastructure/README.md](geomap-infrastructure/README.md) |
-
 ## ⚠️ **Important Tip for Judges:**
 We have deployed both applications on the cloud for you to test. The codebase used is exactly the same as the one presented in this repository.
 Since 10 minutes is not sufficient for full credentials configuration, we are providing you with the following resources:
@@ -50,6 +34,22 @@ Since 10 minutes is not sufficient for full credentials configuration, we are pr
 - Geomap URL:  [https://geomap.greenearthx.io/](GeoMap) (you can create your own account)
   
 > A Testing Guide is Provided for Each Folder in the repository.
+
+## Project Structure – Multi-Repo Layout
+
+> This is a monorepo grouping all hackathon components into a single GitHub project.
+> Each folder is a self-contained module with its own README.md, scripts, and deployment instructions.
+
+| Folder                      | Purpose                                                   | Local URL                | Key README                                  |
+|-----------------------------|-----------------------------------------------------------|--------------------------|---------------------------------------------|
+| certification.webapp        | Next.js dApp for document upload, OCR trigger, NFT minting | http://localhost:3002    | [certification.webapp/README.md](certification.webapp/README.md) |
+| Geomap.webapp               | Interactive global plant map + live Mirror Node history   | http://localhost:3001    | [Geomap.webapp/README.md](geomap.webapp/README.md) |
+| Onboarding.app              | User onboarding                                                             | http://localhost:3000    | [Onboarding.app/README.md](Onboarding.app/README.md) |
+| OcrPlausibilityCheck        | Python FastAPI OCR service (Docker)                       | http://localhost:8000    | [OcrPlausibilityCheck/README.md](OcrPlausibilityCheck/README.md) |
+| PlausibilityCheck           | Plausibility algorithm micro-service (Docker)             | http://localhost:8001    | [PlausibilityCheck/README.md](PlausibilityCheck/README.md) |
+| Hedera-collection-and-topics| Scripts to create NFT collections & HCS topic             | —                        | [Hedera-collection-and-topics/README.md](Hedera-collection-and-topics/README.md) |
+| certification_terraform     | Terraform IaC for backend infra (optional)                | —                        | -|
+| geomap-infrastructure       | Cloud infra for Geomap (optional)                         | —                        | - |
 
 ## Hedera Integration Summary
 
