@@ -29,7 +29,6 @@ Desktop.ini
 # ENVIRONMENT & SECRETS
 # ==========================================
 .env
-.env.*
 !.env.example
 *.tfvars
 *.tfvars.json

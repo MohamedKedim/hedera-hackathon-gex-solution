@@ -3,7 +3,7 @@ const { AuthorizationCode } = require('simple-oauth2');
 const config = {
   client: {
     id: '8946aa8d-aa2f-40cf-9f6f-1413150cc319',
-    secret: 'iws8Q~AriijK3Z~GsJ3FFiPiYlce3Sv54rfxeb3r',
+    secret: process.env.MICROSOFT_CLIENT_SECRET,
   },
   auth: {
     tokenHost: 'https://login.microsoftonline.com',
