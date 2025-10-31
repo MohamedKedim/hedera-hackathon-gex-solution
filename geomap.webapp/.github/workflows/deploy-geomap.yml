@@ -1,0 +1,74 @@
+# .github/workflows/deploy-geomap.yml
+name: Deploy Geomap App
+
+on:
+  push:
+    branches: [main]
+    paths: 
+      - 'src/**'
+      - 'public/**'
+      - 'package.json'
+      - 'Dockerfile'
+      - '.github/workflows/deploy-geomap.yml'
+
+  workflow_dispatch:
+
+env:
+  AWS_REGION: us-west-1
+  ECR_REPOSITORY: geomap-app
+  ECS_SERVICE: geomap-service
+  ECS_CLUSTER: geomap-cluster
+  ECS_TASK_DEFINITION: geomap-task
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    environment: production
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v4
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: ${{ env.AWS_REGION }}
+
+    - name: Login to Amazon ECR
+      id: login-ecr
+      uses: aws-actions/amazon-ecr-login@v2
+
+    - name: Build, tag, and push image to Amazon ECR
+      id: build-image
+      env:
+        ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+        IMAGE_TAG: latest
+      run: |
+        run: |
+        docker build \
+          --build-arg MICROSOFT_CLIENT_ID="${{ secrets.MICROSOFT_CLIENT_ID }}" \
+          --build-arg MICROSOFT_CLIENT_SECRET="${{ secrets.MICROSOFT_CLIENT_SECRET }}" \
+          --build-arg MICROSOFT_TENANT_ID="${{ secrets.MICROSOFT_TENANT_ID }}" \
+          --build-arg MICROSOFT_REFRESH_TOKEN="${{ secrets.MICROSOFT_REFRESH_TOKEN }}" \
+          --build-arg NEXTAUTH_SECRET="${{ secrets.NEXTAUTH_SECRET }}" \
+          --build-arg NEXTAUTH_URL="${{ secrets.NEXTAUTH_URL }}" \
+          -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
+        docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+        echo "image=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG" >> $GITHUB_OUTPUT
+
+    - name: Force ECS service update
+      run: |
+        # Force ECS service to pull the latest image by updating the service
+        aws ecs update-service \
+          --cluster ${{ env.ECS_CLUSTER }} \
+          --service ${{ env.ECS_SERVICE }} \
+          --force-new-deployment \
+          --region ${{ env.AWS_REGION }}
+        
+        aws ecs wait services-stable \
+          --cluster ${{ env.ECS_CLUSTER }} \
+          --services ${{ env.ECS_SERVICE }} \
+          --region ${{ env.AWS_REGION }}

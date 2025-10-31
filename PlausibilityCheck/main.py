@@ -249,17 +249,21 @@ class PlausibilityChecker:
     def check_ci_compliance(self) -> bool:
         """Check CI (LCA) meets or exceeds the limit"""
         try:
-            # Extract CI values (handle negative numbers)
-            pos_ci = float(self.pos.ghg.ci_lca.replace(',', '.'))
-            pos_limit = float(self.pos.ghg.ci_limit.replace(',', '.'))
-            
+            def normalize_number(value: str) -> str:
+                """Normalize number string by replacing Unicode minus with ASCII minus"""
+                return value.replace(',', '.').replace('−', '-').replace('\u2212', '-')
+
+            # Extract CI values (handle negative numbers and Unicode minus signs)
+            pos_ci = float(normalize_number(self.pos.ghg.ci_lca))
+            pos_limit = float(normalize_number(self.pos.ghg.ci_limit))
+
             # Extract CI target from termsheet (remove symbols)
             ts_ci_str = self.termsheet.sustainability.ci_target
-            ts_ci = float(ts_ci_str.split()[-2].replace(',', '.'))  # Extract number
-            
+            ts_ci = float(normalize_number(ts_ci_str.split()[-2]))  # Extract number
+
             # Extract CI limit from PPA
             ppa_ci_str = self.ppa.sustainability_compliance.ci_limit
-            ppa_ci = float(ppa_ci_str.split()[-2].replace(',', '.'))  # Extract number
+            ppa_ci = float(normalize_number(ppa_ci_str.split()[-2]))  # Extract number
             
             # CI must be <= limit (more negative is better)
             passed = pos_ci <= pos_limit and pos_ci <= ts_ci and pos_ci <= ppa_ci
