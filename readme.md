@@ -54,6 +54,8 @@ Since 10 minutes is not sufficient for full credentials configuration, we are pr
 | geomap-infrastructure       | Cloud infra for Geomap (optional)                         | [Geomap Terraform Repo](https://github.com/GreenEarthX/geomap.terraform) | - |
 
 ## Hedera Integration Summary
+### Hedera Integration Flow Diagram
+<img width="1083" height="577" alt="Screenshot 2025-10-31 at 8 32 35 PM" src="https://github.com/user-attachments/assets/167e08cd-ae81-4543-9917-4bc89e8bb97e" />
 
 ### Services Used
 
