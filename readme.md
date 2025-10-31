@@ -31,97 +31,16 @@ All verification is **on-chain, cost-effective, and instantly shareable**.
 > This is a monorepo grouping all hackathon components into a single GitHub project.
 > Each folder is a self-contained module with its own README.md, scripts, and deployment instructions.
 
-| Folder                      | Purpose                                                   | Local URL                | Key Documentation                                  |
+| Folder                      | Purpose                                                   | Local URL                | Key README                                  |
 |-----------------------------|-----------------------------------------------------------|--------------------------|---------------------------------------------|
-| certification.webapp        | Next.js dApp for document upload, OCR trigger, NFT minting | http://localhost:3002    | [SETUP.md](certification.webapp/SETUP.md) \| [README.md](certification.webapp/README.md) |
-| geomap.webapp               | Interactive global plant map + live Mirror Node history   | http://localhost:3001    | [SETUP.md](geomap.webapp/SETUP.md) \| [README.md](geomap.webapp/README.md) |
-| onboarding                  | User onboarding and registration                          | http://localhost:3000    | [SETUP.md](onboarding/SETUP.md) \| [README.md](onboarding/README.md) |
-| OcrPlausibilityCheck        | Python FastAPI OCR service (Docker)                       | http://localhost:8000    | [SETUP.md](OcrPlausibilityCheck/SETUP.md) |
-| PlausibilityCheck           | Plausibility algorithm micro-service (Docker)             | http://localhost:8001    | See [OcrPlausibilityCheck/SETUP.md](OcrPlausibilityCheck/SETUP.md) |
-| Hedera-collection-and-topics| Scripts to create NFT collections & HCS topic             | —                        | [SETUP.md](Hedera-collection-and-topics/SETUP.md) |
-| certification_terraform     | Terraform IaC for backend infra (optional)                | —                        | [README.md](certification_terraform/README.md) |
-| geomap-infrastructure       | Cloud infra for Geomap (optional)                         | —                        | [README.md](geomap-infrastructure/README.md) |
-
----
-
-## Local Setup Guide for Judges
-
-Each folder contains detailed setup instructions. Here's the recommended order:
-
-### Prerequisites
-- Node.js v18+
-- Docker Desktop
-- PostgreSQL (local or cloud)
-- Internet connection
-
-### Quick Start (15-20 minutes)
-
-1. **Start Backend Services** (Required first)
-   ```bash
-   # Pull and run Docker containers
-   docker pull medbnk/plausibility_ocrs:latest
-   docker pull medbnk/plausibilityalgorithm:latest
-   docker run -d -p 8000:8000 medbnk/plausibility_ocrs:latest
-   docker run -d -p 8001:8001 medbnk/plausibilityalgorithm:latest
-   ```
-   See [OcrPlausibilityCheck/SETUP.md](OcrPlausibilityCheck/SETUP.md)
-
-2. **Setup Onboarding App** (Optional)
-   ```bash
-   cd onboarding
-   cp .env.example .env
-   # Configure .env (see SETUP.md for credentials)
-   npm install && npm run dev
-   ```
-   See [onboarding/SETUP.md](onboarding/SETUP.md)
-
-3. **Setup Geomap App** (Optional)
-   ```bash
-   cd geomap.webapp
-   cp .env.example .env
-   # Configure .env (see SETUP.md for credentials)
-   npm install && npm run dev
-   ```
-   See [geomap.webapp/SETUP.md](geomap.webapp/SETUP.md)
-
-4. **Setup Certification App** (Main application)
-   ```bash
-   cd certification.webapp
-   cp .env.example .env
-   # Configure .env (see SETUP.md for all required credentials)
-   npm install && npm run dev
-   ```
-   See [certification.webapp/SETUP.md](certification.webapp/SETUP.md)
-
-5. **(Optional) Create Your Own Hedera Collections**
-   ```bash
-   cd Hedera-collection-and-topics
-   cp .env.example .env
-   # Add your Hedera testnet credentials
-   node createGexInvoices.js
-   node createGexPowerPurchase.js
-   node createGexSustainability.js
-   node createGexTermsheet.js
-   node createGexTraceTopic.js
-   ```
-   See [Hedera-collection-and-topics/SETUP.md](Hedera-collection-and-topics/SETUP.md)
-
-### Credentials Cheat Sheet
-
-Each `.env.example` file contains detailed instructions. Key services you'll need:
-
-| Service | Purpose | Get It From | Required For |
-|---------|---------|-------------|--------------|
-| Auth0 | User authentication | https://auth0.com/ | certification.webapp |
-| Google Gemini API | AI OCR processing | https://makersuite.google.com/app/apikey | certification.webapp, OcrPlausibilityCheck |
-| OpenAI API | AI recommendations | https://platform.openai.com/api-keys | certification.webapp |
-| Hedera Testnet | NFT minting & HCS | https://portal.hedera.com/register | certification.webapp |
-| Pinata | IPFS file storage | https://app.pinata.cloud/ | certification.webapp |
-| PostgreSQL | Database | Local or Aiven/AWS RDS | All webapps |
-| Google reCAPTCHA | Form protection | https://www.google.com/recaptcha/admin | geomap.webapp, onboarding |
-| Email SMTP | Verification emails | Gmail App Password | geomap.webapp, onboarding |
-
----
+| certification.webapp        | Next.js dApp for document upload, OCR trigger, NFT minting | http://localhost:3002    | [certification.webapp/README.md](certification.webapp/README.md) |
+| Geomap.webapp               | Interactive global plant map + live Mirror Node history   | http://localhost:3001    | [Geomap.webapp/README.md](Geomap.webapp/README.md) |
+| Onboarding.app              | User onboarding                                                             | http://localhost:3000    | [Onboarding.app/README.md](Onboarding.app/README.md) |
+| OcrPlausibilityCheck        | Python FastAPI OCR service (Docker)                       | http://localhost:8000    | [OcrPlausibilityCheck/README.md](OcrPlausibilityCheck/README.md) |
+| PlausibilityCheck           | Plausibility algorithm micro-service (Docker)             | http://localhost:8001    | [PlausibilityCheck/README.md](PlausibilityCheck/README.md) |
+| Hedera-collection-and-topics| Scripts to create NFT collections & HCS topic             | —                        | [Hedera-collection-and-topics/README.md](Hedera-collection-and-topics/README.md) |
+| certification_terraform     | Terraform IaC for backend infra (optional)                | —                        | [certification_terraform/README.md](certification_terraform/README.md) |
+| geomap-infrastructure       | Cloud infra for Geomap (optional)                         | —                        | [geomap-infrastructure/README.md](geomap-infrastructure/README.md) |
 
 ## ⚠️ **Important Tip for Judges:**
 We have deployed both applications on the cloud for you to test. The codebase used is exactly the same as the one presented in this repository.
@@ -129,8 +48,8 @@ Since 10 minutes is not sufficient for full credentials configuration, we are pr
 - Certification URL: [http://gexcertification.ddnsking.com:3000/](Certification WebApp)
 - Test Account: **Email:** `hedera@test.gmail`, **Password:** `Hedera2025*`
 - Geomap URL:  [https://geomap.greenearthx.io/](GeoMap) (you can create your own account)
-
-> **Detailed Testing Guides:** Each folder contains a comprehensive SETUP.md with step-by-step instructions, troubleshooting, and testing scenarios.
+  
+> A Testing Guide is Provided for Each Folder in the repository.
 
 ## Hedera Integration Summary
 
@@ -258,26 +177,51 @@ Mirror Node queries are free and publicly accessible, enabling cost-free verific
 
 ---
 
----
+**Deploy NFT Collections & Create HCS Topic**
+   ```bash
+   cd Hedera-collection-and-topics
+   node createGexInvoices.js
+   node createGexPowerPurchase.js
+   node createGexSustainability.js
+   node createGexTermsheet.js
+   node createGexTraceTopic.js 
+   ```
+   This will create the 4 NFT collections and HCS topic, outputting their IDs to update in `.env`. 
+   > Note: Already done for the hackathon – IDs are shared here.
 
-## Complete Setup Documentation
+### Running the Project Locally
 
-For detailed local setup instructions with credentials configuration, testing scenarios, and troubleshooting:
+**Frontend Apps (run each separately):**
+```bash
+# Onboarding
+cd Onboarding.app
+npm run dev   # → http://localhost:3000
 
-- **Certification WebApp Setup:** [certification.webapp/SETUP.md](certification.webapp/SETUP.md)
-- **Geomap WebApp Setup:** [geomap.webapp/SETUP.md](geomap.webapp/SETUP.md)
-- **Onboarding App Setup:** [onboarding/SETUP.md](onboarding/SETUP.md)
-- **OCR & Plausibility Services Setup:** [OcrPlausibilityCheck/SETUP.md](OcrPlausibilityCheck/SETUP.md)
-- **Hedera Collections Setup:** [Hedera-collection-and-topics/SETUP.md](Hedera-collection-and-topics/SETUP.md)
+# Geomap
+cd ../Geomap.webapp
+npm run dev   # → http://localhost:3001
 
-Each guide includes:
-- Step-by-step installation
-- Credential configuration with links to obtain API keys
-- Testing scenarios for judges
-- Troubleshooting common issues
-- Expected behavior documentation
+# Certification dApp
+cd ../certification.webapp
+npm run dev   # → http://localhost:3002
+```
+**Backend (OCR + Plausibility):**
+OCR and Plausibility check services : pull docker images
 
----
+```bash
+docker pull medbnk/plausibility_ocrs:latest
+docker pull medbnk/plausibilityalgorithm:latest
+
+# For Mac
+docker run -p 8000:8000 medbnk/plausibility_ocrs:latest
+docker run -p 8001:8001 medbnk/plausibilityalgorithm:latest
+
+# For Ubuntu 
+sudo docker run -d -p 8000:8000 --platform=linux/arm64 medbnk/plausibility_ocrs:latest
+sudo docker run -d -p 8001:8001 --platform=linux/arm64 medbnk/plausibilityalgorithm:latest
+```
+> - OCR → `http://localhost:8000`
+> - Plausibility → `http://localhost:8001`
 
 
 ## Expected Running State
