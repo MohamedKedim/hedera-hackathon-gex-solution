@@ -33,7 +33,7 @@ Since 10 minutes is not sufficient for full credentials configuration, we are pr
 - Test Account: **Email:** `hedera@test.gmail`, **Password:** `Hedera2025*`
 - Geomap URL:  [https://geomap.greenearthx.io/](GeoMap) (you can create your own account)
   
-> A Testing Guide is Provided for Each Folder in the repository.
+> A Setup and Testing Guide is Provided for Each component in the repository in each Folder !
 
 ## Project Structure – Multi-Repo Layout
 
@@ -253,8 +253,7 @@ sudo docker run -d -p 8001:8001 --platform=linux/arm64 medbnk/plausibilityalgori
 
 ## Support & Contact
 
-**Team Contact:** [marwen123.c@gmail.com ]  
-**GitHub Issues:** [Link to your GitHub repo issues]  
+**Team Contact:** [mohamedbenkedim@gmail.com ]  
 
 ---
 
