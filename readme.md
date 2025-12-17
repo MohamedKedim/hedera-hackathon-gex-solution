@@ -30,7 +30,7 @@ All verification is **on-chain, cost-effective, and instantly shareable**.
 We have deployed both applications on the cloud for you to test. The codebase used is exactly the same as the one presented in this repository.
 Since 10 minutes is not sufficient for full credentials configuration, we are providing you with the following resources:
 - Certification URL: https://certification.greenearthx.io/
-- Test Account: **Email:** `hedera@test.gmail`, **Password:** `Hedera2025*`
+- Test Account: **Email:** `jean.marie@gmail.com`, **Password:** `Jean000*`
 - Geomap URL:  [https://geomap.greenearthx.io/](GeoMap) (you can create your own account)
   
 > A Setup and Testing Guide is Provided for Each component in the repository in each Folder !
